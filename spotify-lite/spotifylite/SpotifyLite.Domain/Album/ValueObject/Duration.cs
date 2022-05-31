@@ -24,10 +24,9 @@
                 $"{PadLeftWithZerosForTwoCharsLength(PartInSeconds)}";
         }
 
-        private string PadLeftWithZerosForTwoCharsLength(decimal durationPart)
+        private static string PadLeftWithZerosForTwoCharsLength(decimal durationPart)
         {
             return durationPart.ToString().PadLeft(2, '0');
         }
-
     }
 }
