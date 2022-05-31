@@ -19,12 +19,12 @@
 
         private string FormatInHoursMinutesAndSeconds()
         {
-            return $"{PadLeftWithZerosForTwoDigitsLength(PartInHours)}:" +
-                $"{PadLeftWithZerosForTwoDigitsLength(PartInMinutes)}:" +
-                $"{PadLeftWithZerosForTwoDigitsLength(PartInSeconds)}";
+            return $"{PadLeftWithZerosForTwoCharsLength(PartInHours)}:" +
+                $"{PadLeftWithZerosForTwoCharsLength(PartInMinutes)}:" +
+                $"{PadLeftWithZerosForTwoCharsLength(PartInSeconds)}";
         }
 
-        private string PadLeftWithZerosForTwoDigitsLength(decimal durationPart)
+        private string PadLeftWithZerosForTwoCharsLength(decimal durationPart)
         {
             return durationPart.ToString().PadLeft(2, '0');
         }
