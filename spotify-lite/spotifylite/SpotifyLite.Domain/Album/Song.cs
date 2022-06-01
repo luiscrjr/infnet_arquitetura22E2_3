@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace SpotifyLite.Domain.Album
 {
-    public class Music
+    public class Song
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
-        public Duration Duration { get; set; }
+        public Duration Duration { get; private set; }
 
     }
 }

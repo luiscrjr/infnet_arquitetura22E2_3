@@ -8,20 +8,17 @@ namespace SpotifyLite.Domain.User.ValueObject
 {
     public class CPF
     {
-        public CPF()
-        {
 
-        }
-        public CPF(string value)
+        public CPF(string cpf)
         {
             this.Value = value?.Replace(".", "").Replace("-", "") ?? throw new ArgumentNullException(nameof(CPF));
         }
 
         public String Value { get; set; }
+            
+        }
 
-        public string FormatValue => Format(this.Value);
-
-        private string Format(string value) => Convert.ToInt64(value).ToString(@"000\.000\.000\-00");
+        public string Value { get; private set; }
 
     }
 }

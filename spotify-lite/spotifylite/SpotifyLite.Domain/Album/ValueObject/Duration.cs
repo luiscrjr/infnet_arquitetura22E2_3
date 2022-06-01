@@ -8,36 +8,39 @@ namespace SpotifyLite.Domain.Album.ValueObject
 {
     public class Duration
     {
-        public Duration()
+        public Duration(decimal inSeconds)
         {
-
+            TotalInSeconds = inSeconds;
         }
 
-        public Duration(decimal valor)
+        public decimal TotalInSeconds { get; private set; }
+
+        private decimal PartInHours => Math.Floor(TotalInSeconds / 3600);
+
+        private decimal PartInMinutes
         {
-            this.Value = valor;
-        }
-
-        public Decimal Value { get; set; }
-
-        public string FormatValue => Format(this.Value);
-
-        private string Format(decimal value)
-        {
-            var hours = Math.Floor(value / 3600);
-            var duration = value % 3600;
-
-            var minutes = Math.Floor(duration / 60);
-            var seconds = duration % 60;
-
-            if (hours > 0)
+            get
             {
-                return $"{hours.ToString().PadLeft(2, '0')} Hrs {minutes.ToString().PadLeft(2, '0')} Min  {seconds.ToString().PadLeft(2, '0')} Seg";
+                var remainingSeconds = TotalInSeconds - (PartInHours * 3600);
+                return Math.Floor(remainingSeconds / 60);
             }
-
-            return $"{minutes.ToString().PadLeft(2, '0')} Min  {seconds.ToString().PadLeft(2, '0')} Seg";
         }
 
+        private decimal PartInSeconds => TotalInSeconds - (PartInHours * 3600) - (PartInMinutes * 60);
+
+        public string InHoursMinutesAndSeconds => FormatInHoursMinutesAndSeconds();
+
+        private string FormatInHoursMinutesAndSeconds()
+        {
+            return $"{PadLeftWithZerosUntilTwoDigitsLength(PartInHours)}:" +
+                $"{PadLeftWithZerosUntilTwoDigitsLength(PartInMinutes)}:" +
+                $"{PadLeftWithZerosUntilTwoDigitsLength(PartInSeconds)}";
+        }
+
+        private string PadLeftWithZerosUntilTwoDigitsLength(decimal durationPart)
+        {
+            return durationPart.ToString().PadLeft(2, '0');
+        }
 
     }
 }

@@ -10,14 +10,13 @@ namespace SpotifyLite.Domain.Album.ValueObject
     {
         public Band()
         {
-
         }
-        public Band(String name)
+
+        public Band(string name)
         {
-            this.Name = name;
+            Name = name;
         }
 
-        public String Name { get; set; }
-
+        public string Name { get; private set; }
     }
 }

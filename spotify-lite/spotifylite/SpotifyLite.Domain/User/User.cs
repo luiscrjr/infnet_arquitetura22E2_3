@@ -11,15 +11,15 @@ namespace SpotifyLite.Domain.User
 {
     public class User
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
-        public String Name { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public string Photo { get; set; }
-        public CPF CPF { get; set; }
-        public Email Email { get; set; }
-        public Password Password { get; set; }
-        public IList<UserFavoriteMusic> FavoriteMusics { get; set; }
+        public String Name { get; private set; }
+        public DateTime DateOfBirth { get; private set; }
+        public string Photo { get; private set; }
+        public CPF CPF { get; private set; }
+        public Email Email { get; private set; }
+        public Password Password { get; private set; }
+        public ICollection<UserFavoriteSong> FavoriteSongs { get; private set; }
 
         public void Validate() => new UserValidator().ValidateAndThrow(this);
     }
