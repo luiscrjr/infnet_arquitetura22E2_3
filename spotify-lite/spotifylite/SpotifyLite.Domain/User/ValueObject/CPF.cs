@@ -4,16 +4,8 @@
     {
         public CPF(string cpf)
         {
-<<<<<<< HEAD
-            this.Value = value?.Replace(".", "").Replace("-", "") ?? throw new ArgumentNullException(nameof(CPF));
-        }
-
-        public String Value { get; set; }
-            
-=======
             ArgumentNullException.ThrowIfNull(cpf, nameof(cpf));
             Value = FormatWithDigitsOnly(cpf);
->>>>>>> b13ba2e... Modelagem inicial do dominio da solucao concluida
         }
 
         public string Value { get; private set; }
