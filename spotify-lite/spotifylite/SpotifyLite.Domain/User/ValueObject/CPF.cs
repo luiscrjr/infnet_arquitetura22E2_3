@@ -1,24 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SpotifyLite.Domain.User.ValueObject
+﻿namespace SpotifyLite.Domain.User.ValueObject
 {
     public class CPF
     {
-
         public CPF(string cpf)
         {
+<<<<<<< HEAD
             this.Value = value?.Replace(".", "").Replace("-", "") ?? throw new ArgumentNullException(nameof(CPF));
         }
 
         public String Value { get; set; }
             
+=======
+            ArgumentNullException.ThrowIfNull(cpf, nameof(cpf));
+            Value = FormatWithDigitsOnly(cpf);
+>>>>>>> b13ba2e... Modelagem inicial do dominio da solucao concluida
         }
 
         public string Value { get; private set; }
 
+        public string FormatWithPointsAndDots => FormatValueWithPointsAndDots();
+
+        private string FormatWithDigitsOnly(string cpf) => cpf.Replace(".", "").Replace("-", "");
+        private string FormatValueWithPointsAndDots() => Convert.ToInt64(Value).ToString(@"000\.000\.000\-00");
     }
 }

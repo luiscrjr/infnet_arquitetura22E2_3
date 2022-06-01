@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,18 @@ namespace SpotifyLite.Domain.User.ValueObject
         }
 
         public string Value { get; set; }
+=======
+﻿namespace SpotifyLite.Domain.User.ValueObject
+{
+    public class Password
+    {
+        public Password(string password)
+        {
+            ArgumentNullException.ThrowIfNull(password, nameof(password));
+            Value = password;
+        }
+
+        public string Value { get; private set; }
+>>>>>>> b13ba2e... Modelagem inicial do dominio da solucao concluida
     }
 }
