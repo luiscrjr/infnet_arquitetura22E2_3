@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace SpotifyLite.Repository.Mapping.UserMapping
 {
-    public class UserFavoriteMusicMapping : IEntityTypeConfiguration<UserFavoriteMusic>
+    public class UserFavoriteSongMapping : IEntityTypeConfiguration<UserFavoriteSong>
     {
-        public void Configure(EntityTypeBuilder<UserFavoriteMusic> builder)
+        public void Configure(EntityTypeBuilder<UserFavoriteSong> builder)
         {
-            builder.ToTable("UserFavoriteMusics");
+            builder.ToTable("UserFavoriteSongs");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
 
-            builder.HasOne(x => x.Music).WithMany();
-            builder.HasOne(x => x.User).WithMany(x => x.FavoriteMusics);
+            builder.HasOne(x => x.Song).WithMany();
+            builder.HasOne(x => x.User).WithMany(x => x.FavoriteSongs);
 
         }
     }

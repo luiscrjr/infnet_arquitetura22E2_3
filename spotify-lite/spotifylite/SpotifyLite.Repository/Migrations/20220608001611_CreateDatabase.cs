@@ -42,7 +42,7 @@ namespace SpotifyLite.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Musics",
+                name: "Songs",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -52,9 +52,9 @@ namespace SpotifyLite.Repository.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Musics", x => x.Id);
+                    table.PrimaryKey("PK_Songs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Musics_Albums_AlbumId",
+                        name: "FK_Songs_Albums_AlbumId",
                         column: x => x.AlbumId,
                         principalTable: "Albums",
                         principalColumn: "Id",
@@ -62,24 +62,24 @@ namespace SpotifyLite.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserFavoriteMusics",
+                name: "UserFavoriteSongs",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    MusicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SongId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserFavoriteMusics", x => x.Id);
+                    table.PrimaryKey("PK_UserFavoriteSongs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserFavoriteMusics_Musics_MusicId",
-                        column: x => x.MusicId,
-                        principalTable: "Musics",
+                        name: "FK_UserFavoriteSongs_Songs_SongId",
+                        column: x => x.SongId,
+                        principalTable: "Songs",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_UserFavoriteMusics_Users_UserId",
+                        name: "FK_UserFavoriteSongs_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -87,28 +87,28 @@ namespace SpotifyLite.Repository.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Musics_AlbumId",
-                table: "Musics",
+                name: "IX_Songs_AlbumId",
+                table: "Songs",
                 column: "AlbumId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserFavoriteMusics_MusicId",
-                table: "UserFavoriteMusics",
-                column: "MusicId");
+                name: "IX_UserFavoriteSongs_SongId",
+                table: "UserFavoriteSongs",
+                column: "SongId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserFavoriteMusics_UserId",
-                table: "UserFavoriteMusics",
+                name: "IX_UserFavoriteSongs_UserId",
+                table: "UserFavoriteSongs",
                 column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "UserFavoriteMusics");
+                name: "UserFavoriteSongs");
 
             migrationBuilder.DropTable(
-                name: "Musics");
+                name: "Songs");
 
             migrationBuilder.DropTable(
                 name: "Users");

@@ -33,33 +33,33 @@ CREATE TABLE [Users] (
 );
 GO
 
-CREATE TABLE [Musics] (
+CREATE TABLE [Songs] (
     [Id] uniqueidentifier NOT NULL,
     [Name] nvarchar(150) NOT NULL,
     [Duracao] decimal(18,2) NOT NULL,
     [AlbumId] uniqueidentifier NULL,
-    CONSTRAINT [PK_Musics] PRIMARY KEY ([Id]),
-    CONSTRAINT [FK_Musics_Albums_AlbumId] FOREIGN KEY ([AlbumId]) REFERENCES [Albums] ([Id]) ON DELETE CASCADE
+    CONSTRAINT [PK_Songs] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Songs_Albums_AlbumId] FOREIGN KEY ([AlbumId]) REFERENCES [Albums] ([Id]) ON DELETE CASCADE
 );
 GO
 
-CREATE TABLE [UserFavoriteMusics] (
+CREATE TABLE [UserFavoriteSongs] (
     [Id] uniqueidentifier NOT NULL,
-    [MusicId] uniqueidentifier NOT NULL,
+    [SongId] uniqueidentifier NOT NULL,
     [UserId] uniqueidentifier NOT NULL,
-    CONSTRAINT [PK_UserFavoriteMusics] PRIMARY KEY ([Id]),
-    CONSTRAINT [FK_UserFavoriteMusics_Musics_MusicId] FOREIGN KEY ([MusicId]) REFERENCES [Musics] ([Id]) ON DELETE CASCADE,
-    CONSTRAINT [FK_UserFavoriteMusics_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+    CONSTRAINT [PK_UserFavoriteSongs] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_UserFavoriteSongs_Songs_SongId] FOREIGN KEY ([SongId]) REFERENCES [Songs] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_UserFavoriteSongs_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
 );
 GO
 
-CREATE INDEX [IX_Musics_AlbumId] ON [Musics] ([AlbumId]);
+CREATE INDEX [IX_Songs_AlbumId] ON [Songs] ([AlbumId]);
 GO
 
-CREATE INDEX [IX_UserFavoriteMusics_MusicId] ON [UserFavoriteMusics] ([MusicId]);
+CREATE INDEX [IX_UserFavoriteSongs_SongId] ON [UserFavoriteSongs] ([SongId]);
 GO
 
-CREATE INDEX [IX_UserFavoriteMusics_UserId] ON [UserFavoriteMusics] ([UserId]);
+CREATE INDEX [IX_UserFavoriteSongs_UserId] ON [UserFavoriteSongs] ([UserId]);
 GO
 
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])

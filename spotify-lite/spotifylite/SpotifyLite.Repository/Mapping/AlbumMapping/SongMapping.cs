@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 
 namespace SpotifyLite.Repository.Mapping.AlbumMapping
 {
-    public class MusicMapping : IEntityTypeConfiguration<Music>
+    public class SongMapping : IEntityTypeConfiguration<Song>
     {
-        public void Configure(EntityTypeBuilder<Music> builder)
+        public void Configure(EntityTypeBuilder<Song> builder)
         {
-            builder.ToTable("Musics");
+            builder.ToTable("Songs");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(x => x.Name).IsRequired().HasMaxLength(150);
 
             builder.OwnsOne(p => p.Duration, f =>
             {
-                f.Property(x => x.Value).HasColumnName("Duracao");
+                f.Property(x => x.InSeconds).HasColumnName("Duracao");
             });
 
             

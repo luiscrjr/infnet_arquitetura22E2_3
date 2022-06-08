@@ -50,7 +50,7 @@ namespace SpotifyLite.Repository.Migrations
                     b.ToTable("Albums", (string)null);
                 });
 
-            modelBuilder.Entity("SpotifyLite.Domain.Album.Music", b =>
+            modelBuilder.Entity("SpotifyLite.Domain.Album.Song", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -68,7 +68,7 @@ namespace SpotifyLite.Repository.Migrations
 
                     b.HasIndex("AlbumId");
 
-                    b.ToTable("Musics", (string)null);
+                    b.ToTable("Songs", (string)null);
                 });
 
             modelBuilder.Entity("SpotifyLite.Domain.User.User", b =>
@@ -95,13 +95,13 @@ namespace SpotifyLite.Repository.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("SpotifyLite.Domain.User.UserFavoriteMusic", b =>
+            modelBuilder.Entity("SpotifyLite.Domain.User.UserFavoriteSong", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("MusicId")
+                    b.Property<Guid>("SongId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("UserId")
@@ -109,11 +109,11 @@ namespace SpotifyLite.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MusicId");
+                    b.HasIndex("SongId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserFavoriteMusics", (string)null);
+                    b.ToTable("UserFavoriteSongs", (string)null);
                 });
 
             modelBuilder.Entity("SpotifyLite.Domain.Album.Album", b =>
@@ -140,28 +140,28 @@ namespace SpotifyLite.Repository.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SpotifyLite.Domain.Album.Music", b =>
+            modelBuilder.Entity("SpotifyLite.Domain.Album.Song", b =>
                 {
                     b.HasOne("SpotifyLite.Domain.Album.Album", null)
-                        .WithMany("Musics")
+                        .WithMany("Songs")
                         .HasForeignKey("AlbumId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.OwnsOne("SpotifyLite.Domain.Album.ValueObject.Duration", "Duration", b1 =>
                         {
-                            b1.Property<Guid>("MusicId")
+                            b1.Property<Guid>("SongId")
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<decimal>("Value")
                                 .HasColumnType("decimal(18,2)")
                                 .HasColumnName("Duracao");
 
-                            b1.HasKey("MusicId");
+                            b1.HasKey("SongId");
 
-                            b1.ToTable("Musics");
+                            b1.ToTable("Songs");
 
                             b1.WithOwner()
-                                .HasForeignKey("MusicId");
+                                .HasForeignKey("SongId");
                         });
 
                     b.Navigation("Duration")
@@ -234,33 +234,33 @@ namespace SpotifyLite.Repository.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SpotifyLite.Domain.User.UserFavoriteMusic", b =>
+            modelBuilder.Entity("SpotifyLite.Domain.User.UserFavoriteSong", b =>
                 {
-                    b.HasOne("SpotifyLite.Domain.Album.Music", "Music")
+                    b.HasOne("SpotifyLite.Domain.Album.Song", "Song")
                         .WithMany()
-                        .HasForeignKey("MusicId")
+                        .HasForeignKey("SongId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SpotifyLite.Domain.User.User", "User")
-                        .WithMany("FavoriteMusics")
+                        .WithMany("FavoriteSongs")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Music");
+                    b.Navigation("Song");
 
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("SpotifyLite.Domain.Album.Album", b =>
                 {
-                    b.Navigation("Musics");
+                    b.Navigation("Songs");
                 });
 
             modelBuilder.Entity("SpotifyLite.Domain.User.User", b =>
                 {
-                    b.Navigation("FavoriteMusics");
+                    b.Navigation("FavoriteSongs");
                 });
 #pragma warning restore 612, 618
         }

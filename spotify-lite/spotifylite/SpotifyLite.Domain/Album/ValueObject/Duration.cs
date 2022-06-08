@@ -4,24 +4,24 @@
     {
         public Duration(decimal inSeconds)
         {
-            TotalInSeconds = inSeconds;
+            InSeconds = inSeconds;
         }
 
-        public decimal TotalInSeconds { get; private set; }
+        public decimal InSeconds { get; private set; }
 
-        private decimal PartInHours => Math.Floor(TotalInSeconds / 3600);
+        private decimal PartialInHours => Math.Floor(InSeconds / 3600);
 
-        private decimal PartInMinutes => Math.Floor(TotalInSeconds - (PartInHours * 3600) / 60);
+        private decimal PartialInMinutes => Math.Floor(InSeconds - (PartialInHours * 3600) / 60);
 
-        private decimal PartInSeconds => TotalInSeconds - (PartInHours * 3600) - (PartInMinutes * 60);
+        private decimal PartialInSeconds => InSeconds - (PartialInHours * 3600) - (PartialInMinutes * 60);
 
         public string InHoursMinutesAndSeconds => FormatInHoursMinutesAndSeconds();
 
         private string FormatInHoursMinutesAndSeconds()
         {
-            return $"{PadLeftWithZerosForTwoCharsLength(PartInHours)}:" +
-                $"{PadLeftWithZerosForTwoCharsLength(PartInMinutes)}:" +
-                $"{PadLeftWithZerosForTwoCharsLength(PartInSeconds)}";
+            return $"{PadLeftWithZerosForTwoCharsLength(PartialInHours)}:" +
+                $"{PadLeftWithZerosForTwoCharsLength(PartialInMinutes)}:" +
+                $"{PadLeftWithZerosForTwoCharsLength(PartialInSeconds)}";
         }
 
         private static string PadLeftWithZerosForTwoCharsLength(decimal durationPart)
