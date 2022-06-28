@@ -28,14 +28,13 @@ namespace SpotifyLite.Domain.Album.ValueObject
             var duration = value % 3600;
 
             var minutes = Math.Floor(duration / 60);
-            var seconds = duration % 60;
 
             if (hours > 0)
             {
-                return $"{hours.ToString().PadLeft(2, '0')} Hrs {minutes.ToString().PadLeft(2, '0')} Min  {seconds.ToString().PadLeft(2, '0')} Seg";
+                return $"{hours.ToString().PadLeft(2, '0')} hr {minutes.ToString().PadLeft(2, '0')} min";
             }
 
-            return $"{minutes.ToString().PadLeft(2, '0')} Min  {seconds.ToString().PadLeft(2, '0')} Seg";
+            return $"{minutes.ToString().PadLeft(2, '0')} min";
         }
 
 
