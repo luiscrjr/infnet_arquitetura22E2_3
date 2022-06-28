@@ -9,6 +9,5 @@ namespace SpotifyLite.Domain.Album
         public string Name { get; private set; }
 
         public Duration Duration { get; private set; }
-
     }
 }
