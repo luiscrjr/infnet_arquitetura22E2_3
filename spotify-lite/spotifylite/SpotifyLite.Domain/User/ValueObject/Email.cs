@@ -2,6 +2,10 @@
 {
     public class Email
     {
+        public Email()
+        {
+        }
+
         public Email(string email)
         {
             ArgumentNullException.ThrowIfNull(email, nameof(email));

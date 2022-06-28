@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 {
     public class Password
     {
+        public Password()
+        {
+        }
+
         public Password(string password)
         {
             ArgumentNullException.ThrowIfNull(password, nameof(password));

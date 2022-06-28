@@ -2,6 +2,10 @@
 {
     public class CPF
     {
+        public CPF()
+        {
+        }
+
         public CPF(string cpf)
         {
             ArgumentNullException.ThrowIfNull(cpf, nameof(cpf));
