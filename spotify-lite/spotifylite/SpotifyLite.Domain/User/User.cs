@@ -24,7 +24,7 @@ namespace SpotifyLite.Domain.User
         public CPF CPF { get; private set; }
         public Email Email { get; private set; }
         public Password Password { get; private set; }
-        public ICollection<UserFavoriteSong> FavoriteSongs { get; private set; }
+        public virtual ICollection<UserFavoriteSong> FavoriteSongs { get; private set; }
 
         public void Validate() => new UserValidator().ValidateAndThrow(this);
     }
