@@ -1,9 +1,6 @@
-﻿using SpotifyLite.Application.Album.Dto;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using SpotifyLite.Application.Album.DTOs;
+using SpotifyLite.Application.Song.DTOs;
 
 namespace SpotifyLite.Application.Album.Profile
 {
@@ -11,11 +8,11 @@ namespace SpotifyLite.Application.Album.Profile
     {
         public AlbumProfile()
         {
-            CreateMap<Domain.Album.Music, MusicOutputDto>()
-                .ForMember(x => x.Duration, f => f.MapFrom(m => m.Duration.FormatValue));
+            CreateMap<Domain.Album.Song, SongOutputDto>()
+                .ForMember(x => x.Duration, f => f.MapFrom(m => m.Duration.InHoursMinutesAndSeconds));
 
-            CreateMap<MusicInputDto, Domain.Album.Music>()
-                .ForPath(x => x.Duration.Value, f => f.MapFrom(m => m.Duration));
+            CreateMap<SongInputDto, Domain.Album.Song>()
+                .ForPath(x => x.Duration.InSeconds, f => f.MapFrom(m => m.Duration));
 
             CreateMap<Domain.Album.Album, AlbumOutputDto>()
                 .ForMember(x => x.Band, f => f.MapFrom(m => m.Band.Name));

@@ -3,11 +3,11 @@ using SpotifyLite.Application.Album.DTOs;
 
 namespace SpotifyLite.Application.Album.Handler.Commands
 {
-    public class CreateAlbumCommand : IRequest<CreateAlbumCommandResponse>
+    public class DeleteAlbumCommand : IRequest<DeleteAlbumCommandResponse>
     {
         public AlbumInputDto Album { get; set; }
 
-        public CreateAlbumCommand(AlbumInputDto album)
+        public DeleteAlbumCommand(AlbumInputDto album)
         {
             Album = album;
         }

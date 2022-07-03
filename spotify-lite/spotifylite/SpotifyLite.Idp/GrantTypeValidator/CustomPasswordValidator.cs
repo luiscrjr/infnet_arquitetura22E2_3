@@ -19,7 +19,7 @@ namespace SpotifyLite.Idp.GrantTypeValidator
             var password = context.Password;
             var username = context.UserName;
 
-            var user = await this.Repository.GetUserByPassword(username, password); 
+            var user = await this.Repository.GetUserByPassword(username, password);
 
             if (user != null)
             {

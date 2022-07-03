@@ -3,10 +3,8 @@ using SpotifyLite.Domain.Album;
 using SpotifyLite.Domain.Album.Repository;
 using SpotifyLite.Infrastructure.Database;
 using SpotifyLite.Repository.Context;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SpotifyLite.Repository.Repository
@@ -15,12 +13,12 @@ namespace SpotifyLite.Repository.Repository
     {
         public AlbumRepository(SpotifyContext context) : base(context)
         {
-            
+
         }
 
-        public async Task<IEnumerable<Album>> GetAllAlbum()
+        public async Task<ICollection<Album>> GetAll()
         {
-            return await Task.FromResult(this._set.Include(x => x.Musics).AsEnumerable());
+            return await this._set.Include(x => x.Songs).ToListAsync();
         }
     }
 }

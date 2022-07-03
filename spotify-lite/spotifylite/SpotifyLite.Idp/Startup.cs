@@ -1,24 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using SpotifyLite.Domain.Album.Repository;
-using SpotifyLite.Domain.User.Repository;
 using SpotifyLite.Idp.GrantTypeValidator;
 using SpotifyLite.Idp.ProfileService;
 using SpotifyLite.Repository;
-using SpotifyLite.Repository.Context;
-using SpotifyLite.Repository.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SpotifyLite.Idp
 {

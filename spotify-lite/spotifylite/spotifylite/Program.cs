@@ -1,12 +1,6 @@
-using IdentityModel;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.EntityFrameworkCore;
 using SpotifyLite.Application;
-using SpotifyLite.Domain.Album.Repository;
-using SpotifyLite.Domain.User.Repository;
-using SpotifyLite.Repository;
-using SpotifyLite.Repository.Context;
-using SpotifyLite.Repository.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +17,7 @@ builder.Services
 builder.Services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(opt =>
                 {
-                    opt.Authority = "https://localhost:5001";
+                    opt.Authority = "https://localhost:44367";
                     opt.ApiName = "SpotifyLite";
                     opt.ApiSecret = "SuperSenhaDificil";
                 });

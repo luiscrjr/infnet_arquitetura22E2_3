@@ -1,15 +1,7 @@
 
-﻿using FluentValidation;
+using FluentValidation;
 using SpotifyLite.Domain.User.Rules;
 using SpotifyLite.Domain.User.ValueObject;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-﻿using SpotifyLite.Domain.User.ValueObject;
-
 
 namespace SpotifyLite.Domain.User
 {

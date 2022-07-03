@@ -6,8 +6,8 @@ namespace SpotifyLite.Domain.User
     {
         public Guid Id { get; private set; }
 
-        public User User { get; private set; }
+        public virtual User User { get; private set; }
 
-        public Song Song { get; private set; }      
+        public virtual Song Song { get; private set; }
     }
 }

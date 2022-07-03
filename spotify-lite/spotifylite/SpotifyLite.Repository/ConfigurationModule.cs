@@ -4,11 +4,6 @@ using SpotifyLite.Domain.Album.Repository;
 using SpotifyLite.Domain.User.Repository;
 using SpotifyLite.Repository.Context;
 using SpotifyLite.Repository.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SpotifyLite.Repository
 {

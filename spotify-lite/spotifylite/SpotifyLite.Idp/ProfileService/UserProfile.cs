@@ -23,8 +23,8 @@ namespace SpotifyLite.Idp.ProfileService
         {
             var id = context.Subject.GetSubjectId();
 
-            var user = await this.Repository.GetById(new Guid(id)); 
-            
+            var user = await this.Repository.GetById(new Guid(id));
+
             var claims = new List<Claim>()
             {
                 new Claim("name", user.Name),

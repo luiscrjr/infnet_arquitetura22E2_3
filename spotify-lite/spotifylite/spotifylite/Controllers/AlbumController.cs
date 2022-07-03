@@ -1,13 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SpotifyLite.Application.Album.Dto;
+using SpotifyLite.Application.Album.DTOs;
 using SpotifyLite.Application.Album.Handler.Commands;
-using SpotifyLite.Application.Album.Handler.Query;
-using SpotifyLite.Domain.Album;
-using SpotifyLite.Domain.Album.Repository;
-using SpotifyLite.Infrastructure.Database;
+using SpotifyLite.Application.Album.Handler.Queries;
 
 namespace SpotifyLite.API.Controllers
 {
@@ -24,19 +20,35 @@ namespace SpotifyLite.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(AlbumInputDto inputDto)
+        public async Task<IActionResult> CreateAsync(AlbumInputDto albumInputDto)
         {
-            var result = await this.Handler.Send(new CreateAlbumCommand(inputDto));
+            var result = await Handler.Send(new CreateAlbumCommand(albumInputDto));
 
             return Created($"/{result.Album.Id}", result.Album);
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var result = await this.Handler.Send(new GetAllQueryCommand());
+            var result = await Handler.Send(new GetAllQueryCommand());
 
             return Ok(result.Albums);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateAsync(AlbumInputDto albumInputDto)
+        {
+            var result = await Handler.Send(new UpdateAlbumCommand(albumInputDto));
+
+            return Ok(result.Album);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteAsync(AlbumInputDto albumInputDto)
+        {
+            await Handler.Send(new DeleteAlbumCommand(albumInputDto));
+
+            return NoContent();
         }
 
     }
