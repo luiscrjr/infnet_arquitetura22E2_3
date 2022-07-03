@@ -15,7 +15,7 @@ namespace SpotifyLite.Domain.Album
 
         public DateTime DateAdded { get; set; }
 
-        public Duration Duration { get; set; }
+        public virtual Duration Duration { get; set; }
 
     }
 }

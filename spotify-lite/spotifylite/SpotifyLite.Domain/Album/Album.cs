@@ -13,8 +13,8 @@ namespace SpotifyLite.Domain.Album
 
         public string Name { get; set; }
         public string Description { get; set; }        
-        public Band Band { get;set; }
-        public IList<Music> Musics {get; set; }
+        public virtual Band Band { get;set; }
+        public virtual IList<Music> Musics {get; set; }
 
         public DateTime ReleaseDate { get; set; }
 

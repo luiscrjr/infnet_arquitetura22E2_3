@@ -23,7 +23,7 @@ builder.Services
 builder.Services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(opt =>
                 {
-                    opt.Authority = "https://localhost:5001";
+                    opt.Authority = "https://localhost:44367";
                     opt.ApiName = "SpotifyLite";
                     opt.ApiSecret = "SuperSenhaDificil";
                 });

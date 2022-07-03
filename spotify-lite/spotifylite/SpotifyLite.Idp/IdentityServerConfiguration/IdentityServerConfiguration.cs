@@ -40,7 +40,7 @@ namespace SpotifyLite.Idp.IdentityServerConfiguration
                 new ApiScope
                 {
                     Name = "SpotifyAPI",
-                    Description = "Scope for API Spotify",
+                    Description = "Escopo da API Spotify",
                     UserClaims = { "user", "admin" }
                 }
             };

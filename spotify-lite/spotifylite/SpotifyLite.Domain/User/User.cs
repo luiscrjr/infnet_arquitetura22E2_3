@@ -21,8 +21,8 @@ namespace SpotifyLite.Domain.User
         public Email Email { get; set; }
         public String Country { get; set; }
         public String Gender { get; set; }
-        public Password Password { get; set; }
-        public IList<UserFavoriteMusic> FavoriteMusics { get; set; }
+        public virtual Password Password { get; set; }
+        public virtual IList<UserFavoriteMusic> FavoriteMusics { get; set; }
 
         public void Validate() => new UserValidator().ValidateAndThrow(this);
     }
