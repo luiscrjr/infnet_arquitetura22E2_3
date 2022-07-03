@@ -37,6 +37,11 @@ namespace SpotifyLite.Domain.Album.ValueObject
             return $"{minutes.ToString().PadLeft(2, '0')} min";
         }
 
+        public override string ToString()
+        {
+            return FormatValue;
+        }
+
 
     }
 }

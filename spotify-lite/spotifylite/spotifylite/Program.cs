@@ -1,4 +1,7 @@
+using IdentityModel;
+using IdentityServer4.AccessTokenValidation;
 using Microsoft.EntityFrameworkCore;
+using SpotifyLite.Application;
 using SpotifyLite.Domain.Album.Repository;
 using SpotifyLite.Domain.User.Repository;
 using SpotifyLite.Repository;
@@ -14,19 +17,33 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.RegisterRepository(builder.Configuration.GetConnectionString("SpotifyDB"));
+builder.Services
+       .RegisterApplication(builder.Configuration.GetConnectionString("SpotifyDB"));
+
+builder.Services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                .AddIdentityServerAuthentication(opt =>
+                {
+                    opt.Authority = "https://localhost:5001";
+                    opt.ApiName = "SpotifyLite";
+                    opt.ApiSecret = "SuperSenhaDificil";
+                });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("user-policy", p =>
+    {
+        p.RequireClaim("role", "spotify-user");
+    });
+});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
