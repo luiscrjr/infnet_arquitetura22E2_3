@@ -27,16 +27,25 @@ namespace SpotifyLite.Application.Album.Services
 
         public async Task<AlbumOutputDto> Update(AlbumInputDto albumInputDto)
         {
-            var album = mapper.Map<Domain.Album.Album>(albumInputDto);
+            Domain.Album.Album album = null;
+            var albumFromDb = await albumRepository.GetById(albumInputDto.Id);
 
-            await albumRepository.Update(album);
+            if (albumFromDb != null)
+            {
+                albumRepository.Detach(albumFromDb);
+                album = mapper.Map<Domain.Album.Album>(albumInputDto);
+                await albumRepository.Update(album);
+            }
 
             return mapper.Map<AlbumOutputDto>(album);
         }
 
-        public async Task Delete(AlbumInputDto albumInputDto)
+        public async Task Delete(Guid albumId)
         {
-            var album = mapper.Map<Domain.Album.Album>(albumInputDto);
+            var album = await albumRepository.GetById(albumId);
+
+            if (album == null)
+                return;
 
             await albumRepository.Delete(album);
         }

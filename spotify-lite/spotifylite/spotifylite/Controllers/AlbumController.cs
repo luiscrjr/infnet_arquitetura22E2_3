@@ -20,7 +20,7 @@ namespace SpotifyLite.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(AlbumInputDto albumInputDto)
+        public async Task<IActionResult> CreateAsync([FromBody] AlbumInputDto albumInputDto)
         {
             var result = await Handler.Send(new CreateAlbumCommand(albumInputDto));
 
@@ -36,17 +36,17 @@ namespace SpotifyLite.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateAsync(AlbumInputDto albumInputDto)
+        public async Task<IActionResult> UpdateAsync([FromBody] AlbumInputDto albumInputDto)
         {
             var result = await Handler.Send(new UpdateAlbumCommand(albumInputDto));
 
             return Ok(result.Album);
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> DeleteAsync(AlbumInputDto albumInputDto)
+        [HttpDelete("{albumId}")]
+        public async Task<IActionResult> DeleteAsync(Guid albumId)
         {
-            await Handler.Send(new DeleteAlbumCommand(albumInputDto));
+            await Handler.Send(new DeleteAlbumCommand(albumId));
 
             return NoContent();
         }

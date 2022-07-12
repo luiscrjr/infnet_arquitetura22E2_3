@@ -2,6 +2,10 @@
 {
     public class Duration
     {
+        public Duration()
+        {
+        }
+
         public Duration(decimal inSeconds)
         {
             InSeconds = inSeconds;
@@ -11,7 +15,7 @@
 
         private decimal PartialInHours => Math.Floor(InSeconds / 3600);
 
-        private decimal PartialInMinutes => Math.Floor(InSeconds - (PartialInHours * 3600) / 60);
+        private decimal PartialInMinutes => Math.Floor((InSeconds - PartialInHours * 3600) / 60);
 
         private decimal PartialInSeconds => InSeconds - (PartialInHours * 3600) - (PartialInMinutes * 60);
 
@@ -26,7 +30,7 @@
 
         private static string PadLeftWithZerosForTwoCharsLength(decimal durationPart)
         {
-            return durationPart.ToString().PadLeft(2, '0');
+            return Math.Truncate(durationPart).ToString().PadLeft(2, '0');
         }
     }
 }

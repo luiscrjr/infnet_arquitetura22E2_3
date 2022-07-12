@@ -9,7 +9,7 @@ namespace SpotifyLite.Application.Album.Profile
         public AlbumProfile()
         {
             CreateMap<Domain.Album.Song, SongOutputDto>()
-                .ForMember(x => x.Duration, f => f.MapFrom(m => m.Duration.InHoursMinutesAndSeconds));
+                .ForPath(x => x.Duration, f => f.MapFrom(m => m.Duration.InHoursMinutesAndSeconds));
 
             CreateMap<SongInputDto, Domain.Album.Song>()
                 .ForPath(x => x.Duration.InSeconds, f => f.MapFrom(m => m.Duration));

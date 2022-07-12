@@ -40,7 +40,7 @@ namespace SpotifyLite.Application.Album.Handler
 
         public async Task<DeleteAlbumCommandResponse> Handle(DeleteAlbumCommand request, CancellationToken cancellationToken)
         {
-            await albumService.Delete(request.Album);
+            await albumService.Delete(request.AlbumId);
 
             return new DeleteAlbumCommandResponse();
         }

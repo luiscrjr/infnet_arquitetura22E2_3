@@ -4,7 +4,6 @@ using SpotifyLite.Domain.Album.Repository;
 using SpotifyLite.Infrastructure.Database;
 using SpotifyLite.Repository.Context;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace SpotifyLite.Repository.Repository
@@ -13,12 +12,20 @@ namespace SpotifyLite.Repository.Repository
     {
         public AlbumRepository(SpotifyContext context) : base(context)
         {
-
         }
 
         public async Task<ICollection<Album>> GetAll()
         {
             return await this._set.Include(x => x.Songs).ToListAsync();
         }
+
+        public async Task Update(Album album)
+        {
+            _context.Entry(album).State = EntityState.Modified;
+            _context.Entry(album.Band).State = EntityState.Modified;
+            _set.Update(album);
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

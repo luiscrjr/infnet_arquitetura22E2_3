@@ -1,16 +1,14 @@
 ﻿using MediatR;
-using SpotifyLite.Application.Album.DTOs;
 
 namespace SpotifyLite.Application.Album.Handler.Commands
 {
     public class DeleteAlbumCommand : IRequest<DeleteAlbumCommandResponse>
     {
-        public AlbumInputDto Album { get; set; }
+        public Guid AlbumId { get; set; }
 
-        public DeleteAlbumCommand(AlbumInputDto album)
+        public DeleteAlbumCommand(Guid albumId)
         {
-            Album = album;
+            AlbumId = albumId;
         }
-
     }
 }
