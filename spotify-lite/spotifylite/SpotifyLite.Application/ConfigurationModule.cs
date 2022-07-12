@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using SpotifyLite.Application.Album.Services;
+using SpotifyLite.Application.User.Services;
 using SpotifyLite.Repository;
 
 
@@ -12,11 +13,13 @@ namespace SpotifyLite.Application
         {
             services.RegisterRepository(connectionString);
 
-            services.AddAutoMapper(typeof(Application.ConfigurationModule).Assembly);
+            services.AddAutoMapper(typeof(ConfigurationModule).Assembly);
 
-            services.AddMediatR(typeof(Application.ConfigurationModule).Assembly);
+            services.AddMediatR(typeof(ConfigurationModule).Assembly);
 
             services.AddScoped<IAlbumServices, AlbumServices>();
+
+            services.AddScoped<IUserServices, UserServices>();
 
             return services;
 

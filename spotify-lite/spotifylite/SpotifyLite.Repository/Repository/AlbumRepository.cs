@@ -16,7 +16,7 @@ namespace SpotifyLite.Repository.Repository
 
         public async Task<ICollection<Album>> GetAll()
         {
-            return await this._set.Include(x => x.Songs).ToListAsync();
+            return await _set.Include(a => a.Songs).ToListAsync();
         }
 
         public async Task Update(Album album)

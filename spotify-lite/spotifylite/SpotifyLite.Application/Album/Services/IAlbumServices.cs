@@ -4,9 +4,9 @@ namespace SpotifyLite.Application.Album.Services
 {
     public interface IAlbumServices
     {
-        Task<AlbumOutputDto> Create(AlbumInputDto albumInputDto);
-        Task<AlbumOutputDto> Update(AlbumInputDto albumInputDto);
+        Task<AlbumDto> Create(AlbumDto albumDto);
+        Task<AlbumDto> Update(AlbumDto albumDto);
         Task Delete(Guid albumId);
-        Task<ICollection<AlbumOutputDto>> GetAll();
+        Task<ICollection<AlbumDto>> GetAll();
     }
 }
