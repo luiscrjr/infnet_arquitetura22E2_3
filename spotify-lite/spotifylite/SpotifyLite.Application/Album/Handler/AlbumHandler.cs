@@ -2,11 +2,6 @@
 using SpotifyLite.Application.Album.Handler.Commands;
 using SpotifyLite.Application.Album.Handler.Query;
 using SpotifyLite.Application.Album.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SpotifyLite.Application.Album.Handler
 {

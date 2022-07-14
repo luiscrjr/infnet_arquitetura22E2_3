@@ -1,9 +1,4 @@
 ﻿using SpotifyLite.Domain.Album.ValueObject;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SpotifyLite.Domain.Album
 {
@@ -12,9 +7,9 @@ namespace SpotifyLite.Domain.Album
         public Guid Id { get; set; }
 
         public string Name { get; set; }
-        public string Description { get; set; }        
-        public virtual Band Band { get;set; }
-        public virtual IList<Music> Musics {get; set; }
+        public string Description { get; set; }
+        public virtual Band Band { get; set; }
+        public virtual IList<Music> Musics { get; set; }
 
         public DateTime ReleaseDate { get; set; }
 

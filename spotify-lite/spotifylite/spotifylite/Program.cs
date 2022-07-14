@@ -1,12 +1,6 @@
-using IdentityModel;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.EntityFrameworkCore;
 using SpotifyLite.Application;
-using SpotifyLite.Domain.Album.Repository;
-using SpotifyLite.Domain.User.Repository;
-using SpotifyLite.Repository;
-using SpotifyLite.Repository.Context;
-using SpotifyLite.Repository.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,13 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SpotifyLite.Application.Album.Dto;
 using SpotifyLite.Application.Album.Handler.Commands;
 using SpotifyLite.Application.Album.Handler.Query;
-using SpotifyLite.Domain.Album;
-using SpotifyLite.Domain.Album.Repository;
-using SpotifyLite.Infrastructure.Database;
 
 namespace SpotifyLite.API.Controllers
 {
