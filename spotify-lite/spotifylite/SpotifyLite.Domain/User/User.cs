@@ -11,6 +11,8 @@ namespace SpotifyLite.Domain.User
         {
         }
 
+        public Guid Id { get; set; }
+
         public String Name { get; set; }
         public String NickName { get; set; }
         public DateTime DateOfBirth { get; set; }

@@ -1,4 +1,5 @@
-﻿using SpotifyLite.Domain.User;
+﻿using Microsoft.EntityFrameworkCore;
+using SpotifyLite.Domain.User;
 using SpotifyLite.Domain.User.Repository;
 using SpotifyLite.Infrastructure.Database;
 using SpotifyLite.Repository.Context;
@@ -15,7 +16,7 @@ namespace SpotifyLite.Repository.Repository
 
         public async Task<ICollection<User>> GetAll()
         {
-            return await _set.Include(u => u.FavoriteSongs).ThenInclude(ufs => ufs.Song).ToListAsync();
+            return await _set.Include(u => u.FavoriteMusics).ThenInclude(ufs => ufs.Music).ToListAsync();
         }
 
         public async Task<User> GetUserByPassword(string username, string password)

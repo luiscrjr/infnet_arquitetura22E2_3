@@ -16,9 +16,9 @@ namespace SpotifyLite.Application.User.Profile
                 .ForPath(u => u.CPF.Value, f => f.MapFrom(u => u.CPF))
                 .ForPath(u => u.Email.Value, f => f.MapFrom(u => u.Email));
 
-            CreateMap<UserFavoriteSongDto, Domain.User.UserFavoriteSong>();
+            CreateMap<UserFavoriteMusicDto, Domain.User.UserFavoriteMusic>();
 
-            CreateMap<Domain.User.UserFavoriteSong, UserFavoriteSongDto>();
+            CreateMap<Domain.User.UserFavoriteMusic, UserFavoriteMusicDto>();
 
         }
     }

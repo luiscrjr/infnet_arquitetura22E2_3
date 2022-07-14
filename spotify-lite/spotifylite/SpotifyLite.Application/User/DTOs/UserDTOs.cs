@@ -1,11 +1,11 @@
 ﻿
-using SpotifyLite.Application.Song.DTOs;
+using SpotifyLite.Application.Music.DTOs;
 
 namespace SpotifyLite.Application.User.DTOs
 {
     public record UserInputDto(Guid Id, string Name, DateTime DateOfBirth, string Photo, string CPF, string Email, string Password);
 
-    public record UserOutputDto(Guid Id, string Name, DateTime DateOfBirth, string Photo, string CPF, string Email, ICollection<UserFavoriteSongDto> FavoriteSongs);
+    public record UserOutputDto(Guid Id, string Name, DateTime DateOfBirth, string Photo, string CPF, string Email, ICollection<UserFavoriteMusicDto> FavoriteMusics);
 
-    public record UserFavoriteSongDto(SongOutputDto song);
+    public record UserFavoriteMusicDto(MusicOutputDto music);
 }

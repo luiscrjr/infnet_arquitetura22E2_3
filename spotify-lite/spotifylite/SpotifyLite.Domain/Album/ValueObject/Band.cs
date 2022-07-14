@@ -6,7 +6,6 @@
         {
         }
 
-        }
         public Band(String name, DateTime dateJoined)
         {
             this.Name = name;
@@ -20,6 +19,5 @@
         {
             return Name;
         }
-
     }
 }

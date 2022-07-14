@@ -20,7 +20,7 @@ namespace SpotifyLite.Repository.Mapping.AlbumMapping
                 f.Property(x => x.Name).HasColumnName("BandName");
             });
 
-            builder.HasMany(x => x.Songs).WithOne().OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(x => x.Musics).WithOne().OnDelete(DeleteBehavior.Cascade);
 
         }
     }
