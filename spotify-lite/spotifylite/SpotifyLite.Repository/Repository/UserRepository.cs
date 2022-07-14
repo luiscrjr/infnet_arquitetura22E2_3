@@ -23,5 +23,15 @@ namespace SpotifyLite.Repository.Repository
         {
             return await FindOneByCriteria(x => x.Email.Value == username && x.Password.Value == password);
         }
+
+        public async Task Update(User user)
+        {
+            _context.Entry(user).State = EntityState.Modified;
+            _context.Entry(user.Email).State = EntityState.Modified;
+            _context.Entry(user.CPF).State = EntityState.Modified;
+            _context.Entry(user.Password).State = EntityState.Modified;
+            _set.Update(user);
+            await _context.SaveChangesAsync();
+        }
     }
 }

@@ -20,7 +20,7 @@ namespace SpotifyLite.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAsync([FromBody] UserDto UserDto)
+        public async Task<IActionResult> CreateAsync([FromBody] UserInputDto UserDto)
         {
             var result = await Handler.Send(new CreateUserCommand(UserDto));
 
@@ -36,7 +36,7 @@ namespace SpotifyLite.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateAsync([FromBody] UserDto UserDto)
+        public async Task<IActionResult> UpdateAsync([FromBody] UserInputDto UserDto)
         {
             var result = await Handler.Send(new UpdateUserCommand(UserDto));
 

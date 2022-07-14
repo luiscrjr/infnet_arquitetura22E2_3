@@ -5,9 +5,9 @@ namespace SpotifyLite.Application.User.Handler.Commands
 {
     public class UpdateUserCommand : IRequest<UpdateUserCommandResponse>
     {
-        public UserDto User { get; set; }
+        public UserInputDto User { get; set; }
 
-        public UpdateUserCommand(UserDto user)
+        public UpdateUserCommand(UserInputDto user)
         {
             User = user;
         }

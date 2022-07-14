@@ -26,6 +26,5 @@ namespace SpotifyLite.Repository.Repository
             _set.Update(album);
             await _context.SaveChangesAsync();
         }
-
     }
 }

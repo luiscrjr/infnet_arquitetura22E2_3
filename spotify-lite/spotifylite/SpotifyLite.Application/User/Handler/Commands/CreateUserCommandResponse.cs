@@ -1,13 +1,12 @@
-﻿using SpotifyLite.Application.Album.DTOs;
-using SpotifyLite.Application.User.DTOs;
+﻿using SpotifyLite.Application.User.DTOs;
 
 namespace SpotifyLite.Application.User.Handler.Commands
 {
     public class CreateUserCommandResponse
     {
-        public UserDto User { get; set; }
+        public UserOutputDto User { get; set; }
 
-        public CreateUserCommandResponse(UserDto user)
+        public CreateUserCommandResponse(UserOutputDto user)
         {
             User = user;
         }
