@@ -12,8 +12,8 @@ using SpotifyLite.Repository.Context;
 namespace SpotifyLite.Repository.Migrations
 {
     [DbContext(typeof(SpotifyContext))]
-    [Migration("20220608002924_AddColumnAlbumReleaseDate")]
-    partial class AddColumnAlbumReleaseDate
+    [Migration("20220714005636_CreateDatabase")]
+    partial class CreateDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,11 +29,6 @@ namespace SpotifyLite.Repository.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Backdrop")
-                        .IsRequired()
-                        .HasMaxLength(1024)
-                        .HasColumnType("nvarchar(1024)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -62,6 +57,9 @@ namespace SpotifyLite.Repository.Migrations
                     b.Property<Guid?>("AlbumId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(150)
@@ -80,10 +78,24 @@ namespace SpotifyLite.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("NickName")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
@@ -103,6 +115,9 @@ namespace SpotifyLite.Repository.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("FavoritedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<Guid>("MusicId")
                         .HasColumnType("uniqueidentifier");
@@ -125,6 +140,9 @@ namespace SpotifyLite.Repository.Migrations
                         {
                             b1.Property<Guid>("AlbumId")
                                 .HasColumnType("uniqueidentifier");
+
+                            b1.Property<DateTime>("DateJoined")
+                                .HasColumnType("datetime2");
 
                             b1.Property<string>("Name")
                                 .IsRequired()

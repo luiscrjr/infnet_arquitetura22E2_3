@@ -12,8 +12,8 @@ using SpotifyLite.Repository.Context;
 namespace SpotifyLite.Repository.Migrations
 {
     [DbContext(typeof(SpotifyContext))]
-    [Migration("20220628025905_CreateDatabase")]
-    partial class CreateDatabase
+    [Migration("20220714010004_PopulaBanco")]
+    partial class PopulaBanco
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -12,12 +12,14 @@ namespace SpotifyLite.Domain.Album.ValueObject
         {
 
         }
-        public Band(String name)
+        public Band(String name, DateTime dateJoined)
         {
             this.Name = name;
+            DateJoined = dateJoined;
         }
 
         public String Name { get; set; }
+        public DateTime DateJoined { get; set; }
 
         public override string ToString()
         {
