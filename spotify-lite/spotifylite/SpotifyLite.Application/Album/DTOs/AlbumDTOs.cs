@@ -2,5 +2,6 @@
 
 namespace SpotifyLite.Application.Album.DTOs
 {
-    public record AlbumDto(Guid Id, string Name, string Band, string Description, string Backdrop, DateTime ReleaseDate, ICollection<SongInputDto> Songs);
+    public record AlbumInputDto(Guid Id, string Name, string Band, string Description, string Backdrop, DateTime ReleaseDate, ICollection<SongInputDto> Songs);
+    public record AlbumOutputDto(Guid Id, string Name, string Band, string Description, string Backdrop, DateTime ReleaseDate, ICollection<SongOutputDto> Songs);
  }

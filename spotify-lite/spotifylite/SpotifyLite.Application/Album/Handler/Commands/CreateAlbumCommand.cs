@@ -5,9 +5,9 @@ namespace SpotifyLite.Application.Album.Handler.Commands
 {
     public class CreateAlbumCommand : IRequest<CreateAlbumCommandResponse>
     {
-        public AlbumDto Album { get; set; }
+        public AlbumInputDto Album { get; set; }
 
-        public CreateAlbumCommand(AlbumDto album)
+        public CreateAlbumCommand(AlbumInputDto album)
         {
             Album = album;
         }

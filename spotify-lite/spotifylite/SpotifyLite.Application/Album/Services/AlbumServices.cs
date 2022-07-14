@@ -15,17 +15,17 @@ namespace SpotifyLite.Application.Album.Services
             this.mapper = mapper;
         }
 
-        public async Task<AlbumDto> Create(AlbumDto albumDto)
+        public async Task<AlbumOutputDto> Create(AlbumInputDto albumDto)
         {
             var album = mapper.Map<Domain.Album.Album>(albumDto);
 
             await albumRepository.Save(album);
 
-            return mapper.Map<AlbumDto>(album);
+            return mapper.Map<AlbumOutputDto>(album);
         }
 
 
-        public async Task<AlbumDto> Update(AlbumDto albumDto)
+        public async Task<AlbumOutputDto> Update(AlbumInputDto albumDto)
         {
             Domain.Album.Album album = null;
             var albumFromDb = await albumRepository.GetById(albumDto.Id);
@@ -37,7 +37,7 @@ namespace SpotifyLite.Application.Album.Services
                 await albumRepository.Update(album);
             }
 
-            return mapper.Map<AlbumDto>(album);
+            return mapper.Map<AlbumOutputDto>(album);
         }
 
         public async Task Delete(Guid albumId)
@@ -50,11 +50,11 @@ namespace SpotifyLite.Application.Album.Services
             await albumRepository.Delete(album);
         }
 
-        public async Task<ICollection<AlbumDto>> GetAll()
+        public async Task<ICollection<AlbumOutputDto>> GetAll()
         {
             var albums = await albumRepository.GetAll();
 
-            return mapper.Map<ICollection<AlbumDto>>(albums);
+            return mapper.Map<ICollection<AlbumOutputDto>>(albums);
         }
     }
 }
