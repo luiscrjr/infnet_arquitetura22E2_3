@@ -52,8 +52,14 @@ namespace SpotifyLite.Infrastructure.Database
 
         public async Task Update(T entity)
         {
+            _context.Entry(entity).State = EntityState.Modified;
             _set.Update(entity);
             await _context.SaveChangesAsync();
+        }
+
+        public void Detach(T entity)
+        {
+            _context.Entry(entity).State = EntityState.Detached;
         }
     }
 }

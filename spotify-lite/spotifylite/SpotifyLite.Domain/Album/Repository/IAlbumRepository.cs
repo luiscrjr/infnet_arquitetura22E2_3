@@ -4,6 +4,7 @@ namespace SpotifyLite.Domain.Album.Repository
 {
     public interface IAlbumRepository : IRepository<Album>
     {
-        Task<IEnumerable<Album>> GetAllAlbum();
+        Task<ICollection<Album>> GetAll();
+        Task Update(Album album);
     }
 }

@@ -13,12 +13,19 @@ namespace SpotifyLite.Repository.Repository
     {
         public AlbumRepository(SpotifyContext context) : base(context)
         {
-
         }
 
-        public async Task<IEnumerable<Album>> GetAllAlbum()
+        public async Task<ICollection<Album>> GetAll()
         {
-            return await Task.FromResult(this._set.Include(x => x.Musics).AsEnumerable());
+            return await _set.Include(a => a.Songs).ToListAsync();
+        }
+
+        public async Task Update(Album album)
+        {
+            _context.Entry(album).State = EntityState.Modified;
+            _context.Entry(album.Band).State = EntityState.Modified;
+            _set.Update(album);
+            await _context.SaveChangesAsync();
         }
     }
 }

@@ -14,5 +14,6 @@ namespace SpotifyLite.Infrastructure.Database
         Task<T> GetById(object id);
         Task<IEnumerable<T>> FindAllByCriteria(Expression<Func<T, bool>> expression);
         Task<T> FindOneByCriteria(Expression<Func<T, bool>> expression);
+        void Detach(T entity);
     }
 }

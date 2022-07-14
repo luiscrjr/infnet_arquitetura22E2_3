@@ -8,7 +8,7 @@ namespace SpotifyLite.Domain.User.Rules
     {
         private const string Pattern = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
 
-        private bool BeAEmailValid(string valor) => Regex.IsMatch(valor, Pattern);
+        private bool BeAValidEmail(string valor) => Regex.IsMatch(valor, Pattern);
         public EmailValidator()
         {
             RuleFor(x => x.Value).NotEmpty().Must(BeAEmailValid).WithMessage("Email inválido");

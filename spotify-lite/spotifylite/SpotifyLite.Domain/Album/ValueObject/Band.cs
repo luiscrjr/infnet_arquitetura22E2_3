@@ -4,6 +4,7 @@
     {
         public Band()
         {
+        }
 
         }
         public Band(String name, DateTime dateJoined)

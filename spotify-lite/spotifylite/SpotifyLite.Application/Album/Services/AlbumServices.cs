@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using SpotifyLite.Application.Album.Dto;
+using SpotifyLite.Application.Album.DTOs;
 using SpotifyLite.Domain.Album.Repository;
 
 namespace SpotifyLite.Application.Album.Services
@@ -15,21 +15,46 @@ namespace SpotifyLite.Application.Album.Services
             this.mapper = mapper;
         }
 
-        public async Task<AlbumOutputDto> Create(AlbumInputDto dto)
+        public async Task<AlbumOutputDto> Create(AlbumInputDto albumDto)
         {
-            var album = this.mapper.Map<Domain.Album.Album>(dto);
+            var album = mapper.Map<Domain.Album.Album>(albumDto);
 
-            await this.albumRepository.Save(album);
+            await albumRepository.Save(album);
 
-            return this.mapper.Map<AlbumOutputDto>(album);
-
+            return mapper.Map<AlbumOutputDto>(album);
         }
 
-        public async Task<List<AlbumOutputDto>> GetAll()
-        {
-            var albuns = await this.albumRepository.GetAllAlbum();
 
-            return this.mapper.Map<List<AlbumOutputDto>>(albuns);
+        public async Task<AlbumOutputDto> Update(AlbumInputDto albumDto)
+        {
+            Domain.Album.Album album = null;
+            var albumFromDb = await albumRepository.GetById(albumDto.Id);
+
+            if (albumFromDb != null)
+            {
+                albumRepository.Detach(albumFromDb);
+                album = mapper.Map<Domain.Album.Album>(albumDto);
+                await albumRepository.Update(album);
+            }
+
+            return mapper.Map<AlbumOutputDto>(album);
+        }
+
+        public async Task Delete(Guid albumId)
+        {
+            var album = await albumRepository.GetById(albumId);
+
+            if (album == null)
+                return;
+
+            await albumRepository.Delete(album);
+        }
+
+        public async Task<ICollection<AlbumOutputDto>> GetAll()
+        {
+            var albums = await albumRepository.GetAll();
+
+            return mapper.Map<ICollection<AlbumOutputDto>>(albums);
         }
     }
 }

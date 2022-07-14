@@ -4,18 +4,19 @@
     {
         public CPF()
         {
-
         }
-        public CPF(string value)
+
+        public CPF(string cpf)
         {
-            this.Value = value?.Replace(".", "").Replace("-", "") ?? throw new ArgumentNullException(nameof(CPF));
+            ArgumentNullException.ThrowIfNull(cpf, nameof(cpf));
+            Value = FormatWithDigitsOnly(cpf);
         }
 
-        public String Value { get; set; }
+        public string Value { get; private set; }
 
-        public string FormatValue => Format(this.Value);
+        public string FormatWithPointsAndDots => FormatValueWithPointsAndDots();
 
-        private string Format(string value) => Convert.ToInt64(value).ToString(@"000\.000\.000\-00");
-
+        private string FormatWithDigitsOnly(string cpf) => cpf.Replace(".", "").Replace("-", "");
+        private string FormatValueWithPointsAndDots() => Convert.ToInt64(Value).ToString(@"000\.000\.000\-00");
     }
 }

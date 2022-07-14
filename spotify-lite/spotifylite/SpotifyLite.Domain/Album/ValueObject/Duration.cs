@@ -4,22 +4,20 @@
     {
         public Duration()
         {
-
         }
 
-        public Duration(decimal valor)
+        public Duration(decimal inSeconds)
         {
-            this.Value = valor;
+            InSeconds = inSeconds;
         }
 
-        public Decimal Value { get; set; }
+        public decimal InSeconds { get; private set; }
 
-        public string FormatValue => Format(this.Value);
+        private decimal PartialInHours => Math.Floor(InSeconds / 3600);
 
-        private string Format(decimal value)
-        {
-            var hours = Math.Floor(value / 3600);
-            var duration = value % 3600;
+        private decimal PartialInMinutes => Math.Floor((InSeconds - PartialInHours * 3600) / 60);
+
+        private decimal PartialInSeconds => InSeconds - (PartialInHours * 3600) - (PartialInMinutes * 60);
 
             var minutes = Math.Floor(duration / 60);
 
@@ -31,11 +29,9 @@
             return $"{minutes.ToString().PadLeft(2, '0')} min";
         }
 
-        public override string ToString()
+        private static string PadLeftWithZerosForTwoCharsLength(decimal durationPart)
         {
-            return FormatValue;
+            return Math.Truncate(durationPart).ToString().PadLeft(2, '0');
         }
-
-
     }
 }

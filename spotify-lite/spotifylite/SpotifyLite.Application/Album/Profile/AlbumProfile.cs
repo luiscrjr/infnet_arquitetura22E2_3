@@ -1,4 +1,5 @@
-﻿using SpotifyLite.Application.Album.Dto;
+﻿
+using SpotifyLite.Application.Album.DTOs;
 
 namespace SpotifyLite.Application.Album.Profile
 {
@@ -6,12 +7,6 @@ namespace SpotifyLite.Application.Album.Profile
     {
         public AlbumProfile()
         {
-            CreateMap<Domain.Album.Music, MusicOutputDto>()
-                .ForMember(x => x.Duration, f => f.MapFrom(m => m.Duration.FormatValue));
-
-            CreateMap<MusicInputDto, Domain.Album.Music>()
-                .ForPath(x => x.Duration.Value, f => f.MapFrom(m => m.Duration));
-
             CreateMap<Domain.Album.Album, AlbumOutputDto>()
                 .ForMember(x => x.Band, f => f.MapFrom(m => m.Band.Name));
 
@@ -19,6 +14,5 @@ namespace SpotifyLite.Application.Album.Profile
                 .ForPath(x => x.Band.Name, f => f.MapFrom(m => m.Band));
 
         }
-
     }
 }

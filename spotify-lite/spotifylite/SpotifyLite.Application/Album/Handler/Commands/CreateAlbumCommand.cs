@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using SpotifyLite.Application.Album.Dto;
+using SpotifyLite.Application.Album.DTOs;
 
 namespace SpotifyLite.Application.Album.Handler.Commands
 {

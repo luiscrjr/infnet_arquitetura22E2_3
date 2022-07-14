@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+
+using FluentValidation;
 using SpotifyLite.Domain.User.Rules;
 using SpotifyLite.Domain.User.ValueObject;
 
@@ -6,7 +7,9 @@ namespace SpotifyLite.Domain.User
 {
     public class User
     {
-        public Guid Id { get; set; }
+        public User()
+        {
+        }
 
         public String Name { get; set; }
         public String NickName { get; set; }

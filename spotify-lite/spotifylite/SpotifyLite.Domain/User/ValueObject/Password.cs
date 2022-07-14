@@ -4,13 +4,14 @@
     {
         public Password()
         {
-
         }
-        public Password(string value)
+
+        public Password(string password)
         {
-            this.Value = value ?? throw new ArgumentNullException(nameof(value));
+            ArgumentNullException.ThrowIfNull(password, nameof(password));
+            Value = password;
         }
 
-        public string Value { get; set; }
+        public string Value { get; private set; }
     }
 }
