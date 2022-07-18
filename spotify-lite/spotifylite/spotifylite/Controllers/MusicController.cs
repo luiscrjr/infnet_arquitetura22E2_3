@@ -1,9 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SpotifyLite.Application.User.DTOs;
-using SpotifyLite.Application.User.Handler.Commands;
-using SpotifyLite.Application.User.Handler.Queries;
+using SpotifyLite.Application.Music.Handler.Commands;
+using SpotifyLite.Application.Music.Handler.Queries;
 
 namespace SpotifyLite.API.Controllers
 {
@@ -19,34 +18,18 @@ namespace SpotifyLite.API.Controllers
             Handler = handler;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateAsync([FromBody] UserInputDto UserDto)
-        {
-            var result = await Handler.Send(new CreateUserCommand(UserDto));
-
-            return Created($"/{result.User.Id}", result.User);
-        }
-
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
             var result = await Handler.Send(new GetAllQueryCommand());
 
-            return Ok(result.Users);
+            return Ok(result.Musics);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> UpdateAsync([FromBody] UserInputDto UserDto)
+        [HttpDelete("{musicId}")]
+        public async Task<IActionResult> DeleteAsync(Guid musicId)
         {
-            var result = await Handler.Send(new UpdateUserCommand(UserDto));
-
-            return Ok(result.User);
-        }
-
-        [HttpDelete("{userId}")]
-        public async Task<IActionResult> DeleteAsync(Guid userId)
-        {
-            await Handler.Send(new DeleteUserCommand(userId));
+            await Handler.Send(new DeleteMusicCommand(musicId));
 
             return NoContent();
         }

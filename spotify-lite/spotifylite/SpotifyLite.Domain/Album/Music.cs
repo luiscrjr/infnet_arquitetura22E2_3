@@ -12,5 +12,7 @@ namespace SpotifyLite.Domain.Album
 
         public virtual Duration Duration { get; set; }
 
+        public Guid AlbumId { get; set; }
+
     }
 }

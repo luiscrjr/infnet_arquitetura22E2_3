@@ -1,6 +1,9 @@
-﻿namespace SpotifyLite.Application.Music.DTOs
+﻿using SpotifyLite.Domain.Album.ValueObject;
+
+namespace SpotifyLite.Application.Music.DTOs
 {
-    public record MusicInputDto(string Name, int Duration);
-    public record MusicOutputDto(string Name, string Duration);
+    public record MusicInputDto(Guid Id, string Name, DateTime DateAdded, Duration Duration, Guid AlbumId);
+    public record MusicOutputDto(Guid Id, string Name, DateTime DateAdded, Duration Duration, Guid AlbumId);
+
 
 }

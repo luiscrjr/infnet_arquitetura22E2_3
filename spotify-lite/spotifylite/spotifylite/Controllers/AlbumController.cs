@@ -4,9 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using SpotifyLite.Application.Album.DTOs;
 using SpotifyLite.Application.Album.Handler.Commands;
 using SpotifyLite.Application.Album.Handler.Queries;
-using SpotifyLite.Domain.Album;
-using SpotifyLite.Domain.Album.Repository;
-using SpotifyLite.Infrastructure.Database;
 
 namespace SpotifyLite.API.Controllers
 {

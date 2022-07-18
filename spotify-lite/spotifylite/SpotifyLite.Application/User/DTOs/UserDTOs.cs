@@ -1,7 +1,4 @@
-﻿
-using SpotifyLite.Application.Music.DTOs;
-
-namespace SpotifyLite.Application.User.DTOs
+﻿namespace SpotifyLite.Application.User.DTOs
 {
     public record UserInputDto(Guid Id, string Name, DateTime DateOfBirth, string Photo, string CPF, string Email, string Password);
 

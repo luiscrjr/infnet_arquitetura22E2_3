@@ -4,7 +4,6 @@ using SpotifyLite.Domain.Album.Repository;
 using SpotifyLite.Infrastructure.Database;
 using SpotifyLite.Repository.Context;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace SpotifyLite.Repository.Repository
