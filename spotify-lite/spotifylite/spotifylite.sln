@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpotifyLite.API", "spotifylite\SpotifyLite.API.csproj", "{A14D70CA-D41E-435F-9471-86FF2056B636}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpotifyLite.API", "Spotifylite.API\SpotifyLite.API.csproj", "{A14D70CA-D41E-435F-9471-86FF2056B636}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpotifyLite.Domain", "SpotifyLite.Domain\SpotifyLite.Domain.csproj", "{45C28FB1-45D5-4A9F-A549-8B559D0DEF38}"
 EndProject
